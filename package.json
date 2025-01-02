@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node app/index.js",
     "test": "vitest",
-    "build": "mkdir -p dist && cp -r public/* dist/ && cp src/index.js dist/"
+    "build": "mkdir -p dist && cp -r public/* dist/ && cp app/index.js dist/"
   },
   "dependencies": {
     "@google/generative-ai": "^0.1.3",
