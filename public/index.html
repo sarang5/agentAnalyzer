@@ -62,6 +62,9 @@
             font-style: italic;
             color: #666;
         }
+        #loading {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -84,8 +87,14 @@
             </div>
             <div id="transcript" class="transcript"></div>
             <button id="endBtn">End Conversation</button>
+            <p id="loading">Please wait...</p>
         </div>
     </div>
+   
+    <h3>Summary</h3>
+    <div id="analysis-report"></div>
+    <br />
+    <h3>Conversation Metrics</h3>
     <div id="report"></div>
 
     <script type="module">

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node api/index.js",
     "test": "vitest",
-    "build": "mkdir -p dist && cp -r public/* dist/ && cp api/index.js dist/"
+    "build": "mkdir -p public && cp -r client/* public/"
   },
   "dependencies": {
     "@google/generative-ai": "^0.1.3",

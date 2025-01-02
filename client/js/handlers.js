@@ -73,10 +73,21 @@ export async function handleEnd() {
       .classList.remove('recording');
   }
 
+  document.getElementById('endBtn').disabled = true;
+  document.getElementById('loading').style.display = 'block';
+
   const report = await endConversation(state.currentConversationId);
-  document.getElementById('report').textContent = JSON.stringify(report, null, 2);
+  console.log('--rep ', report)
+  const summary = `${(report && report.analysis) || ''}`
+  document.getElementById('analysis-report').innerText = summary;
+
+  const metrics = `${JSON.stringify(report.conversationMetrics || {}, null, 2)}`
+  document.getElementById('report').textContent = metrics
   document.getElementById('messageControls').style.display = 'none';
   document.getElementById('startBtn').disabled = false;
   document.getElementById('transcript').textContent = '';
   state.currentConversationId = null;
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('endBtn').disabled = false;
 }

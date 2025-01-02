@@ -62,10 +62,15 @@
             font-style: italic;
             color: #666;
         }
+        #loading {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>Support Call Analyzer</h1>
+    <p>Analyze Customer and Agent conversation and rate the Agents based on pre-defined paramaters. For now, send text messages as Agents/Customers, planning to onboard `recording` in sometime.</p>
+    <p>The idea is to record the CSOP agents conversation with customers and send feedback to the supervisors.</p>
     <div class="controls">
         <button id="startBtn">Start Conversation</button>
         <div id="messageControls" style="display: none;">
@@ -76,14 +81,20 @@
                 <div style="display: flex; flex-direction: column; gap: 5px;">
                     <button id="sendAgentBtn">Send as Agent</button>
                     <button id="sendCustomerBtn">Send as Customer</button>
-                    <button id="recordAgentBtn">Record Agent</button>
-                    <button id="recordCustomerBtn">Record Customer</button>
+                    <button id="recordAgentBtn" disabled>Record Agent</button>
+                    <button id="recordCustomerBtn" disabled>Record Customer</button>
                 </div>
             </div>
             <div id="transcript" class="transcript"></div>
             <button id="endBtn">End Conversation</button>
+            <p id="loading">Please wait...</p>
         </div>
     </div>
+   
+    <h3>Summary</h3>
+    <div id="analysis-report"></div>
+    <br />
+    <h3>Conversation Metrics</h3>
     <div id="report"></div>
 
     <script type="module">
