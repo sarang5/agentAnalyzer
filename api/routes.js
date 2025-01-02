@@ -1,7 +1,7 @@
 import express from 'express';
-import { analyzeConversation } from './analyzer.js';
-import { generateReport } from './reportGenerator.js';
-import { transcribeAudio } from './services/audioTranscription.js';
+import { analyzeConversation } from '../src/analyzer.js';
+import { generateReport } from '../src/reportGenerator.js';
+import { transcribeAudio } from '../src/services/audioTranscription.js';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';

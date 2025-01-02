@@ -1,5 +1,5 @@
 import express from 'express';
-import { router } from '../src/routes.js';
+import { router } from './routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
