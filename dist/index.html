@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Call Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .endpoint {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .controls {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .message-input {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        #report {
+            white-space: pre-wrap;
+            margin-top: 20px;
+        }
+        .recording {
+            animation: pulse 1.5s infinite;
+            background: #dc3545 !important;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .transcript {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Support Call Analyzer</h1>
+    <div class="controls">
+        <button id="startBtn">Start Conversation</button>
+        <div id="messageControls" style="display: none;">
+            <div class="message-input">
+                <div style="flex: 1;">
+                    <textarea id="messageInput" rows="3" placeholder="Enter message"></textarea>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <button id="sendAgentBtn">Send as Agent</button>
+                    <button id="sendCustomerBtn">Send as Customer</button>
+                    <button id="recordAgentBtn">Record Agent</button>
+                    <button id="recordCustomerBtn">Record Customer</button>
+                </div>
+            </div>
+            <div id="transcript" class="transcript"></div>
+            <button id="endBtn">End Conversation</button>
+        </div>
+    </div>
+    <div id="report"></div>
+
+    <script type="module">
+        import { handleStart, handleMessage, handleRecord, handleEnd } from '/js/handlers.js';
+        
+        // Set up event listeners
+        document.getElementById('startBtn').addEventListener('click', handleStart);
+        document.getElementById('sendAgentBtn').addEventListener('click', () => handleMessage('agent'));
+        document.getElementById('sendCustomerBtn').addEventListener('click', () => handleMessage('customer'));
+        document.getElementById('recordAgentBtn').addEventListener('click', () => handleRecord('agent'));
+        document.getElementById('recordCustomerBtn').addEventListener('click', () => handleRecord('customer'));
+        document.getElementById('endBtn').addEventListener('click', handleEnd);
+    </script>
+</body>
+</html>
